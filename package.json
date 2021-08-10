@@ -1,0 +1,18 @@
+{
+  "name": "xinyu",
+  "version": "1.0.0",
+  "description": "\"xinyu blog\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vuepress dev .",
+    "build": "vuepress build .",
+    "export": "vuepress export .",
+    "deoply:refresh-cdn": "node .vuepress/qcloud.cdn.refresh.js"
+  },
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "vuepress": "^1.8.2"
+  }
+}
