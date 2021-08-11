@@ -17,7 +17,7 @@ module.exports = {
         title: 'Hystrix',
         collapsable: false,
         children: [
-          '/hystrix/',
+          // '/hystrix/',
         ]
       }
     ]
