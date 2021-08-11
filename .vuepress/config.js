@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'Hello VuePress',
-  description: 'Just playing around',
+  title: '小宇的blog',
+  description: 'up',
   head: [
     ['link', {rel: 'shortcut icon', type: "image/x-icon", href: `/favicon.ico`}]
   ],
@@ -14,19 +14,10 @@ module.exports = {
         collapsable: false,
         path: '/SUMMARY.md'
       }, {
-        title: '前言',
+        title: 'Hystrix',
         collapsable: false,
         children: [
-          '/introduction/about-me',
-          '/introduction/about-book',
-          '/introduction/about-the-fenix-project',
-        ]
-      },
-      {
-        title: 'a',
-        // collapsable: false,
-        children: [
-          '/xinyu/a',
+          '/hystrix/',
         ]
       }
     ]
