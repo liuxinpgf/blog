@@ -26,4 +26,16 @@ jobs:
           export TZ='Asia/Shanghai'
           npm install
           npm run build
-          echo "www.liuxinpgf.com" >> CNAME
+          echo "liuxinpgf.com" >> CNAME
+
+      - name: Deploy Github-Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder:
+
+      - name: Refresh CDN
+        run: npm run deoply:refresh-cdn
+        env:
+          CDN_ID: ${{ secrets.CDN_ID }}
+          CDN_KEY: ${{ secrets.CDN_KEY }}
