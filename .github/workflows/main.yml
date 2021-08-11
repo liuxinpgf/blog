@@ -25,11 +25,5 @@ jobs:
         run: |
           export TZ='Asia/Shanghai'
           npm install
-          npm run build
+          npm run dev
           echo "www.liuxinpgf.com" >> CNAME
-
-      - name: Deploy Github-Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.4
-        with:
-          branch: gh-pages
-          folder: .vuepress/dist
