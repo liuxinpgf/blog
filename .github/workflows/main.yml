@@ -25,5 +25,5 @@ jobs:
         run: |
           export TZ='Asia/Shanghai'
           npm install
-          npm run dev
+          npm run build
           echo "www.liuxinpgf.com" >> CNAME
