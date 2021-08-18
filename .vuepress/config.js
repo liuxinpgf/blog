@@ -19,6 +19,12 @@ module.exports = {
         children: [
           // '/hystrix/',
         ]
+      },{
+        title: 'HTTP',
+        collapsable: false,
+        children: [
+          '/HTTP/cors'
+        ]
       }
     ]
   }
