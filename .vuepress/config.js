@@ -23,7 +23,7 @@ module.exports = {
         title: 'HTTP',
         collapsable: false,
         children: [
-          '/HTTP/cors'
+          '/HTTP/cors.md'
         ]
       }
     ]
