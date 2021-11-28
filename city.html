@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>html5手机端城市下拉选择代码</title>
+
+    <style type="text/css">
+        body{background:#efecec;position:relative;-webkit-tap-highlight-color:rgba(0,0,0,0);max-width: 600px;margin: 0 auto;}
+        body,div,dl,dt,dd,ul,li,form,input,button,h1,h2,h3,h4,h5,h6,p{margin: 0 auto;padding:0;font-family:"微软雅黑";}
+        html{overflow-x:hidden;-webkit-text-size-adjust:none;}
+        ul,li,dl,dt,dd{display:block;list-style:none;}
+        img{border:0;max-width:100%;height: auto;}
+        .clear{background:none;border:0;clear:both;display:block;float:none;font-size:0;overflow:hidden;visibility:hidden;width:0;height:0;}
+        a{text-decoration:none;outline:none;}
+        .fl{float:left;}
+        .fr{float:right;}
+        .none{display:none;}
+
+        @charset "utf-8";
+        .loan_jm1{width:94%;margin:0 auto;}
+        .loan_jm_spa1{width:39%;height:40px;line-height:40px;font-size:1em;color:#666;display:block;float:left;}
+        .loan_jm_l1{margin-top:10px;margin-bottom:15px;height:40px;}
+        .wbk_srn{width:57%;height:40px;border:1px solid #ccc;background:#FFF;float:left;padding-left:3%;line-height:40px;color:#ADADAD;
+            font-size:1.1em; background-size:45%;background-position:center;background:#fff;}
+        .wbk_srn b{width:30px;height:40px;border:1px solid #ccc;background:#FFF;float:left;padding-left:3%;line-height:40px;color:#ADADAD;
+            font-size:1.1em; background-size:45%;background-position:center;background:url(../img/xl.png) right 5px no-repeat;}
+
+        /*城市弹层*/
+        .IGN_CITY_CONTAINER{width:100%;position:absolute;top:56px;left:0;background-color:#ffffff;z-index:9999;display:none;}
+        .IGN_CITY_LETTER{width:5%;overflow:hidden;line-height:32px;font-size:16px;position:fixed;top:20px;right:10px;text-align:center;}
+        .IGN_CITY_LETTER ul{list-style-type:none;}
+        .IGN_CITY_LETTER ul li a{text-decoration:none;color: gray;}
+        .city{width:90%;overflow:hidden;padding:20px;}
+        .city-list{width:100%;overflow:hidden;}
+        .city-list .city-letter{color:#6e6e6e;font-size:16px;display:inline-block;padding-top:15px;padding-bottom:5px;border-bottom:1px solid #e8ecf1;width:100%;}
+        .city-list p{color:#afafaf;width:95%;height:50px;line-height:50px;border-bottom:1px solid #e8ecf1;cursor:pointer;}
+    </style>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.gtimg.com/cdnjs/libs/zepto/1.1.4/zepto.min.js"></script>
+    <script type="text/javascript">
+        var ex = {
+            cityList:function(value){
+                var city_lett = {};
+                // if(value == "A"){//首字母   -A
+                //     // city_lett = {"210300":"鞍山市","152900":"阿拉善盟","340800":"安庆市","410500":"安阳市","542500":"阿里地区","610900":"安康市","520400":"安顺市","513200":"阿坝藏族羌族自治州","659002":"阿拉尔市","652900":"阿克苏地区","820100":"澳门特别行政区","654300":"阿勒泰地区"};
+                // }else
+                if(value == "B"){//首字母   -B
+                    city_lett = {"鲜果速送；小路精品水果 ：13831238233":"保定市","北京鑫疑昊商贸有限公司：15011196688":"北京市平谷"};
+                }else if(value == "C"){//首字母   -C
+                    city_lett = {"猴子水果零食超市：15076795885；众沃商贸有限公司：15832740166":"沧州市","果婆婆门店":"长春市"};
+                }else if(value == "D"){//首字母   -D
+                    city_lett = {"水果课代表":"东胜","维豆干果水果：0352-8885566":"大同市","王厂进口水果批发：13954626318":"东营市"};
+                }
+                // else if(value == "E"){//首字母   -E
+                //     city_lett = {"150600":"鄂尔多斯市","420700":"鄂州市","422800":"恩施土家族苗族自治州"};
+                // }
+                // else if(value == "F"){//首字母   -F
+                //     city_lett = {"210900":"阜新市","210400":"抚顺市","350181":"福清市","341200":"阜阳市","370983":"肥城市","361000":"抚州市","350100":"福州市","440600":"佛山市","450600":"防城港市"};
+                // }
+                // else if(value == "G"){//首字母   -G
+                //     city_lett = {"440100":"广州市","360700":"赣州市","510800":"广元市","511600":"广安市","450300":"桂林市","450800":"贵港市","520100":"贵阳市","513300":"甘孜藏族自治州","623000":"甘南藏族自治州","640400":"固原市","632600":"果洛藏族自治州"};
+                // }
+                else if(value == "H"){//首字母   -H
+                    city_lett = {"优滋源果蔬贸易有限公司（万邦市场）：1551557886；诚信志远果业连锁":"河南全境","花家水果连锁":"衡水市","御品红水果超市":"呼和浩特市","银田农贸城A11-22果缘精口厅：15215309411":"菏泽市"};
+                }
+                // else if(value == "I"){//首字母   -I
+                //
+                // }
+                else if(value == "J"){//首字母   -J
+                    city_lett = {"李伟果业：18678650080；东润果业：18765842333":"济南市"};
+                }
+                // else if(value == "K"){//首字母   -K
+                //     city_lett = {"320583":"昆山市","410200":"开封市","530100":"昆明市","650200":"克拉玛依市","653000":"克孜勒苏柯尔克孜自治州","653100":"喀什地区"};
+                // }
+                else if(value == "L"){//首字母   -L
+                    city_lett = {"小媳妇果蔬水果店（香河）；甜果生鲜：0316-2010008；喜田生鲜（固安）：15533433592":"廊坊市","龙腾果业：15863998391":"临沂市","靳刚果品：15206351396":"聊城市","榆中小任果菜经销部：18511351628":"兰州市"};
+                }
+                // else if(value == "M"){//首字母   -M
+                //     city_lett = {"231000":"牡丹江市","340500":"马鞍山市","510700":"绵阳市","511400":"眉山市","440900":"茂名市","441400":"梅州市"};
+                // }
+                // else if(value == "N"){//首字母   -N
+                //     city_lett = {"320100":"南京市","330200":"宁波市","320600":"南通市","360100":"南昌市","411300":"南阳市","350700":"南平市","350900":"宁德市","350583":"南安市","542400":"那曲地区","450100":"南宁市","511300":"南充市","511000":"内江市","533300":"怒江傈僳族自治州"};
+                // }
+                // else if(value == "O"){//首字母   -O
+                //
+                // }
+                // else if(value == "P"){//首字母   -P
+                //     city_lett = {"211100":"盘锦市","360300":"萍乡市","410400":"平顶山市","410900":"濮阳市","350300":"莆田市","510400":"攀枝花市","530800":"普洱市","620800":"平凉市"};
+                // }
+                else if(value == "Q"){//首字母   -Q
+                    city_lett = {"东方鼎信2-47，2-48：15092213188":"青岛市"};
+                }
+                // else if(value == "R"){//首字母   -R
+                //     city_lett = {"320682":"如皋市","371082":"荣成市","371100":"日照市","542301":"日喀则市"};
+                // }
+                // else if(value == "S"){//首字母   -S
+                //     city_lett = {"220300":"四平市","231200":"绥化市","220700":"松原市","320500":"苏州市","310100":"上海市","321300":"宿迁市","330600":"绍兴市","140600":"朔州市","230500":"双鸭山市","210100":"沈阳市","330682":"上虞市","130100":"石家庄市","440500":"汕头市","350400":"三明市","429021":"神农架林区","361100":"上饶市","411400":"商丘市","421300":"随州市","341300":"宿州市","411200":"三门峡市","420300":"十堰市","440300":"深圳市","430500":"邵阳市","440200":"韶关市","441500":"汕尾市","510900":"遂宁市","611000":"商洛市","542200":"山南地区","460200":"三亚市","640200":"石嘴山市","659001":"石河子市"};
+                // }
+                else if(value == "T"){//首字母   -T
+                    city_lett = {"大唐精品果业：17610690058":"唐山市","刘艳辉水果批发（蓟县）：15102208106；高海泉精品水果批发（宝坻）:13602019282; 老吕精品水果批发：15122522567":"天津市"};
+                }
+                // else if(value == "U"){//首字母   -U
+                //
+                // }else if(value == "V"){//首字母   -V
+                //
+                // }
+                else if(value == "W"){//首字母   -W
+                    city_lett = {"锦福果业：0536-8696217；向东果业：13791837062；":"潍坊市"};
+                }
+                else if(value == "X"){//首字母   -X
+                    city_lett = {"洋果园：0319-3092333":"邢台市","雨润农副产品全球采购中心：15226271688":"西安市"};
+                }else if(value == "Y"){//首字母   -Y
+                    city_lett = {"阿明果品：15829122066":"榆林市","小任果业":"银川市"};
+                }
+                // else if(value == "Z"){//首字母   -Z
+                //     city_lett = {};
+                // }
+                return city_lett;
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="loan_jm1">
+    <ul>
+        <li class="loan_jm_l1">
+            <span class="loan_jm_spa1"><button>点击选择城市</button></span>
+<!--            <span class="wbk_srn select_show select_gr" id="gr_zone_ids" data-id="130100"></span><b></b>-->
+        </li>
+    </ul>
+    <p id="gr_zone_ids"></p>
+</div>
+
+<div class="IGN_CITY_CONTAINER" style="z-index: 9999;">
+
+    <div class="city"></div>
+
+    <div class="IGN_CITY_LETTER"><ul></ul></div>
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $('.IGN_CITY_CONTAINER').show();
+    });
+
+    function showCity(letter){
+        $(".IGN_CITY_CONTAINER .city .city-list div").hide(); //隐藏所有城市
+        if( $("#"+letter+"1_c").css("display")==='none'){
+            $("#"+letter+"1_c").show();
+        }else{
+            $("#"+letter+"1_c").hidden();
+        }
+    }
+
+    function AZ(){
+        var arr = ['B','C','D','H','J','L','Q','T','W','X','Y'];
+        var    html = "",cityList="";
+        for(var i = 0;i<arr.length;i++){
+            html += "<li><a href=\"javascript:;\">"+arr[i]+"</a></li>";
+            cityList += "<div class=\"city-list\">";
+            cityList += "<span class=\"city-letter\" onclick=\"showCity('"+arr[i]+"')\" id=\""+arr[i]+"1\">"+arr[i]+"</span>";
+            cityList += "<div id=\""+arr[i]+"1_c\" >";
+            $.each(ex.cityList(arr[i]),function(name,value){
+                cityList += "<p data-id="+name+">"+value+"</p>";
+            });
+            cityList += "</div>";
+            cityList += "</div>";
+        }
+        $(".IGN_CITY_LETTER ul").append(html);//添加 城市首字母定位
+        $(".IGN_CITY_CONTAINER .city").append(cityList);//城市列表
+
+        $(".IGN_CITY_CONTAINER .city .city-list div").hide(); //隐藏所有城市
+
+    }
+    AZ();
+
+    //加载城市事件
+    $('body').on('click', '.loan_jm_spa1', function () {
+        var zid = $(this).attr('id');
+        $('.IGN_CITY_CONTAINER').show();
+    });
+
+    //选择城市 start
+    $('body').on('click', '.city-list p', function () {
+        var type = $('.IGN_CITY_CONTAINER').data('type');
+        $('#zone_ids').html($(this).html()).attr('data-id', $(this).attr('data-id'));
+        $('#gr_zone_ids').text( $(this).attr('data-id'));
+        $('.IGN_CITY_CONTAINER').hide();
+    });
+
+    $('body').on('click', '.IGN_CITY_LETTER a', function () {
+        var s = $(this).html();
+        $(window).scrollTop($('#' + s + '1').offset().top);
+        $(".IGN_CITY_CONTAINER .city .city-list div").hide(); //隐藏所有城市
+        $("#"+s+"1_c").show();
+    });
+</script>
+
+<!-- <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div> -->
+</body>
+</html>
